@@ -1,0 +1,21 @@
+services:
+  app:
+    image: analytics-api:v1
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8000:8000"
+    environment:
+      - HOST=0.0.0.0 
+    volumes:
+      - ./app:/code/app
+    develop:
+      watch:
+        - action: rebuild
+          path: Dockerfile
+        - action: rebuild
+          path: requirements.txt
+        - action: rebuild
+          path: docker-compose.yaml  
+             
