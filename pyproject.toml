@@ -1,0 +1,42 @@
+[tool.isort]
+src_paths = ['.']
+skip_glob = ["migrations/*"]
+
+[tool.autoflake]
+remove-all-unused-imports = true
+ignore-init-module-imports = true
+in-place = true
+
+[tool.ruff]
+line-length = 80
+indent-width = 2
+exclude = [
+    "migrations",
+]
+
+[tool.ruff.format]
+quote-style = "double"
+indent-style = "space"
+docstring-code-format = true
+exclude = ["migrations"]
+
+[tool.coverage.run]
+source = ["."]
+omit = [
+    "*/tests/*",
+    "*/migrations/*",
+    "*/settings/*",
+    "*/wsgi.py",
+    "*/asgi.py",
+    "*/views.py",
+    "manage.py",
+    "*/admin.py"
+]
+parallel = true
+concurrency = ["multiprocessing"]
+branch = true
+
+[tool.coverage.report]
+fail_under = 80
+show_missing = true
+skip_covered = true
