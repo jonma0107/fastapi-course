@@ -1,0 +1,27 @@
+@api = http://localhost:8000
+
+GET {{api}}/post/list
+
+###
+POST {{api}}/post
+Content-Type: application/json
+
+{
+    "body": "My first post"
+}
+
+###
+POST {{api}}/comment
+Content-Type: application/json
+
+{
+    "body": "My first comment",
+    "post_id": 0
+}
+
+###
+GET {{api}}/post/0/comment
+
+###
+GET {{api}}/post/0
+
